@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MJAI — Final Release Build & Access Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Top Update Banner -->
+        <div id="updateBanner" class="update-banner hidden">
+            <span>🚀 MJAI v2.6.0-release update is available for deployment.</span>
+            <div>
+                <button id="updateBtn" class="update-btn">Upgrade Now</button>
+                <button id="dismissUpdate" class="update-btn" style="background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.4);">Dismiss</button>
+            </div>
+        </div>
+
+        <!-- Header / Navigation Bar -->
+        <header class="app-header">
+            <div class="brand-box">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div>
+                    <h1 class="brand-title">MJAI <span id="versionBadge" class="version-tag">v2.5.0-final</span></h1>
+                    <p class="brand-sub">Commander: DR SK BADAL</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="status-indicator">
+                    <span class="pulse-dot"></span>
+                    <span>Neural Grid Active</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sub Nav Tabs -->
+        <nav class="sub-nav">
+            <button class="nav-tab active" data-target="moduleDashboard">Dashboard & Access</button>
+            <button class="nav-tab" data-target="moduleChat">Neural AI Core</button>
+            <button class="nav-tab" data-target="moduleLicense">License Manager</button>
+            <button class="nav-tab" data-target="moduleTerminal">Live Terminal</button>
+        </nav>
+
+        <!-- Main Workspace -->
+        <main class="main-container">
+
+            <!-- MODULE 1: Dashboard & Dynamic Password Access Control -->
+            <section id="moduleDashboard" class="module-section active">
+                <div class="module-header">
+                    <h2>Executive Access Portal</h2>
+                    <p>Secure automated clearance, dynamic rotating credentials, and WhatsApp dispatch integration.</p>
+                </div>
+
+                <!-- Hero Access Card -->
+                <div class="hero-card">
+                    <h1>Dynamic Security Grid</h1>
+                    <p>System access passwords rotate automatically every 60 seconds. Verified requests trigger instant WhatsApp alerts to Executive Commander Dr. SK Badal.</p>
+                    
+                    <!-- Password Display & Timer Box -->
+                    <div class="password-widget">
+                        <div class="password-info">
+                            <span class="label">Current Active Password:</span>
+                            <div class="pass-display-box">
+                                <span id="dynamicPassDisplay">MJAI-9428</span>
+                                <button id="copyPassBtn" class="secondary-btn" style="padding: 6px 12px; font-size: 13px;">Copy</button>
+                            </div>
+                        </div>
+                        <div class="timer-box">
+                            <span class="label">Next Rotation In:</span>
+                            <div class="countdown-display"><span id="passTimer">60</span>s</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Access Permission Request Form -->
+                <div class="card-box" style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: var(--radius); padding: clamp(20px, 4vw, 30px); margin-top: 24px;">
+                    <h3 style="margin-bottom: 8px; font-size: 20px;">Request Site Access / Clearance</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">Fill in your details to request access permission. This will instantly send a WhatsApp notification with your access request to Commander Dr. SK Badal.</p>
+                    
+                    <form id="accessRequestForm" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                            <label style="font-size: 14px; font-weight: 500;" for="visitorName">Your Full Name</label>
+                            <input type="text" id="visitorName" placeholder="e.g., Alex Morgan" required style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; color: #fff; font-size: 16px;">
+                        </div>
+
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                            <label style="font-size: 14px; font-weight: 500;" for="visitorPhone">Your Phone / WhatsApp Number</label>
+                            <input type="tel" id="visitorPhone" placeholder="e.g., +91 98765 43210" required style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; color: #fff; font-size: 16px;">
+                        </div>
+
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                            <label style="font-size: 14px; font-weight: 500;" for="accessReason">Reason for Access / Purpose</label>
+                            <textarea id="accessReason" rows="3" placeholder="Specify project verification or testing requirements..." required style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; color: #fff; font-size: 16px; resize: vertical;"></textarea>
+                        </div>
+
+                        <button type="submit" class="primary-btn" style="margin-top: 8px; padding: 14px; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            Dispatch Access Request via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- MODULE 2: Neural AI Core -->
+            <section id="moduleChat" class="module-section">
+                <div class="module-header">
+                    <h2>Neural AI Core</h2>
+                    <p>Interact with Commander Badal's secure assistant model.</p>
+                </div>
+                <div class="card-box" style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; height: 420px;">
+                    <div id="chatMessages" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 12px;">
+                        <div class="chat-bubble ai" style="background: rgba(99, 102, 241, 0.15); border: 1px solid var(--border-color); padding: 12px 16px; border-radius: 12px; max-width: 85%;">
+                            <strong>MJAI Core:</strong> Welcome Dr. Badal / Authorized Guest. Security grid operational. How may I assist your verification today?
+                        </div>
+                    </div>
+                    <form id="chatForm" style="display: flex; gap: 10px; margin-top: 12px; border-top: 1px solid var(--border-color); pt: 12px;">
+                        <input type="text" id="chatInput" placeholder="Type prompt or command..." required style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; color: #fff; font-size: 16px;">
+                        <button type="submit" class="primary-btn" style="padding: 0 20px;">Send</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- MODULE 3: License Manager -->
+            <section id="moduleLicense" class="module-section">
+                <div class="module-header">
+                    <h2>License & Security Clearance</h2>
+                    <p>Manage deployment tokens and system authorizations.</p>
+                </div>
+                <div class="card-box" style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px;">
+                    <h3 style="margin-bottom: 12px;">Active Node License</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 16px;">Node ID: <code>MJAI-NODE-9982-SKB</code></p>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Status: <strong style="color: #10b981;">Fully Licensed & Secure</strong></p>
+                    <button class="primary-btn" id="refreshLicenseBtn">Verify License on Chain</button>
+                </div>
+            </section>
+
+            <!-- MODULE 4: Live Terminal -->
+            <section id="moduleTerminal" class="module-section">
+                <div class="module-header">
+                    <h2>Live Terminal Logs</h2>
+                    <p>Real-time system telemetry and WhatsApp dispatch logs.</p>
+                </div>
+                <div class="card-box" style="background: #060913; border: 1px solid var(--border-color); border-radius: var(--radius); padding: 16px; font-family: monospace; font-size: 13px; color: #34d399; height: 350px; overflow-y: auto;" id="terminalLogs">
+                    <div>[00:00:01] System boot initialized under Commander Dr. SK Badal.</div>
+                    <div>[00:00:02] Dynamic 60-second password rotation engine online.</div>
+                    <div>[00:00:03] WhatsApp notification gateway connected successfully.</div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
